@@ -1,5 +1,4 @@
 ﻿using AdventOfCode2017.Helpers;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -54,9 +53,7 @@ namespace AdventOfCode2017
         /// <returns>Running sum.</returns>
         public static int GetCorruptionChecksumFromTextFile(string fileName)
         {
-
-            string solutionPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
-            string dataPath = solutionPath + "\\AdventOfCode2017\\Data\\" + fileName;
+            string dataPath = ReadFromTextFile.GetFilePath(fileName);
 
             string[] data = ReadFromTextFile.GetAllLines(dataPath);
 
