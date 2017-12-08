@@ -1,7 +1,6 @@
 ﻿using AdventOfCode2017.Helpers;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode2017
 {
@@ -19,14 +18,7 @@ namespace AdventOfCode2017
 
             foreach (string st in data)
             {
-                if (st.Contains("\t"))
-                {
-                    rowData = Regex.Split(st, "\t").ToList();
-                }
-                else
-                {
-                    rowData = Regex.Split(st, " ").ToList();
-                }
+                rowData = DataHelper.GetDataAsStringArray(st).ToList();
 
                 if (rowData.GroupBy(x => x).Where(g => g.Count() > 1).Count() == 0)
                 {

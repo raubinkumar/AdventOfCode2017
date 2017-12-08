@@ -1,6 +1,5 @@
 ﻿using AdventOfCode2017.Helpers;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode2017
 {
@@ -17,33 +16,12 @@ namespace AdventOfCode2017
 
             foreach (string st in data)
             {
-                int[] rowData = GetRowData(st);
+                int[] rowData = DataHelper.GetDataAsIntegerArray(st);
 
                 runningSum += rowData.Max() - rowData.Min();
             }
 
             return runningSum;
-        }
-
-        /// <summary>
-        /// Gets the row data.
-        /// </summary>
-        /// <param name="st">The st.</param>
-        /// <returns>Row data.</returns>
-        private static int[] GetRowData(string st)
-        {
-            int[] rowData;
-
-            if (st.Contains("\t"))
-            {
-                rowData = Regex.Split(st, "\t").Select(int.Parse).ToArray();
-            }
-            else
-            {
-                rowData = Regex.Split(st, " ").Select(int.Parse).ToArray();
-            }
-
-            return rowData;
         }
 
         /// <summary>
