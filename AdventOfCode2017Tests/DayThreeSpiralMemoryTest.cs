@@ -6,6 +6,7 @@ namespace AdventOfCode2017Tests
     [TestClass]
     public class DayThreeSpiralMemoryTest
     {
+        #region Part 1
         [TestMethod]
         public void DayThreeTestMethod1()
         {
@@ -54,5 +55,23 @@ namespace AdventOfCode2017Tests
             int position = DayThreeSpiralMemory.GetDistanceInSpiralMemory(368078);
             Assert.AreEqual(371, position);
         }
+        #endregion
+
+        #region Part 2
+
+        [TestMethod]
+        public void DayThreePartTwoTestMethod1()
+        {
+            int returnedNumber = DayThreeSpiralMemory.GetNextNumberFromStressedGrid(22);
+            Assert.AreEqual(23, returnedNumber);
+        }
+
+        [TestMethod]
+        public void DayThreePartTwoTestMethod2()
+        {
+            int returnedNumber = DayThreeSpiralMemory.GetNextNumberFromStressedGrid(368078);
+            Assert.AreEqual(369601, returnedNumber);
+        }
+        #endregion
     }
 }
