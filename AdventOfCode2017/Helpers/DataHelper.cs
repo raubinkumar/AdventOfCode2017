@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace AdventOfCode2017.Helpers
@@ -45,6 +47,25 @@ namespace AdventOfCode2017.Helpers
             }
 
             return rowData;
+        }
+
+        /// <summary>
+        /// Gets the row data.
+        /// </summary>
+        /// <param name="st">The st.</param>
+        /// <returns>Row data.</returns>
+        public static string[] GetSortedStringArray(string[] stringArray)
+        {
+            List<string> strings = new List<string>();
+
+            foreach (string st in stringArray)
+            {
+                char[] charArray = st.ToCharArray();
+                Array.Sort(charArray);
+                strings.Add(new string(charArray));
+            }
+
+            return strings.ToArray();
         }
     }
 }
