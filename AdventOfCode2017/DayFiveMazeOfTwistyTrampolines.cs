@@ -5,12 +5,13 @@ namespace AdventOfCode2017
 {
     public static class DayFiveMazeOfTwistyTrampolines
     {
+        #region Part 1 and Part 2
         /// <summary>
         /// Gets the number of steps to come out from maze.
         /// </summary>
         /// <param name="steps">The steps.</param>
         /// <returns>Step count.</returns>
-        public static int GetNumberOfStepsToComeOutFromMaze(int[] steps)
+        public static int GetNumberOfStepsToComeOutFromMaze(int[] steps, PuzzlePart part = PuzzlePart.One)
         {
             int stepCount = 0;
             int currentPosition = 0;
@@ -21,7 +22,14 @@ namespace AdventOfCode2017
 
                 currentPosition += steps[currentPosition];
 
-                steps[previousLocation] = steps[previousLocation] + 1;
+                if (part == PuzzlePart.Two && steps[previousLocation] > 2)
+                {
+                    steps[previousLocation] = steps[previousLocation] - 1;
+                }
+                else
+                {
+                    steps[previousLocation] = steps[previousLocation] + 1;
+                }
 
                 stepCount++;
             }
@@ -34,14 +42,27 @@ namespace AdventOfCode2017
         /// </summary>
         /// <param name="fileName">Name of the file.</param>
         /// <returns>step count.</returns>
-        public static int GetNumberOfStepsToComeOutFromMaze(string fileName)
+        public static int GetNumberOfStepsToComeOutFromMaze(string fileName, PuzzlePart part = PuzzlePart.One)
         {
             string path = ReadFromTextFile.GetFilePath(fileName);
 
             string[] dataString = ReadFromTextFile.GetAllLines(path);
             int[] data = dataString.Select(int.Parse).ToArray();
 
-            return GetNumberOfStepsToComeOutFromMaze(data);
+            return GetNumberOfStepsToComeOutFromMaze(data, part);
         }
+
+        #endregion
+
     }
+
+    #region Emum
+
+    public enum PuzzlePart
+    {
+        One,
+        Two
+    }
+
+    #endregion
 }
